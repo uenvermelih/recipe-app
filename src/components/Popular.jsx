@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/dist/css/splide.min.css";
 
 function Popular() {
   const [popular, setPopular] = useState([]);
@@ -17,12 +19,17 @@ function Popular() {
   return (
     <Wrapper>
       <h3>Trending Picks</h3>
+      <Splide>
       {popular.map((recipe) => (
+        <SplideSlide>
         <Card key={recipe.id}>
           <p>{recipe.title}</p>
           <img src={recipe.image} alt={recipe.title} />
         </Card>
+        </SplideSlide>
+
       ))}
+      </Splide>
     </Wrapper>
   );
 }
